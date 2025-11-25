@@ -32,9 +32,6 @@ import droneTopDown from "@assets/generated_images/drone_top-down_view.png";
 import droneSideProfile from "@assets/generated_images/drone_side_profile_technical.png";
 import droneCitySunset from "@assets/generated_images/drone_over_city_sunset.png";
 import firstAidDetail from "@assets/generated_images/first-aid_compartment_detail.png";
-import ronPortrait from "@assets/generated_images/team_member_ron_portrait.png";
-import anikPortrait from "@assets/generated_images/team_member_anik_portrait.png";
-import trimPortrait from "@assets/generated_images/team_member_trim_portrait.png";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -210,10 +207,10 @@ export default function Home() {
               size="lg" 
               variant="outline" 
               className="text-lg px-8 bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-background/30"
-              onClick={() => scrollToSection("demo")}
-              data-testid="button-watch-demo"
+              onClick={() => scrollToSection("contact")}
+              data-testid="button-contact"
             >
-              Watch Demo
+              Contact Us
             </Button>
           </div>
 
@@ -338,37 +335,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Demo Video Section */}
-      <section id="demo" className="py-24 bg-card">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4" data-testid="text-demo-title">
-              See Firehawk in Action
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Watch how Firehawk delivers life-saving supplies in emergency situations
-            </p>
-          </div>
-
-          <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Firehawk Demo Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-              data-testid="video-demo"
-            />
-          </div>
-
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Note: Replace this YouTube URL with your actual demo video
-          </p>
-        </div>
-      </section>
-
       {/* Gallery Section */}
       <section id="gallery" className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6">
@@ -423,34 +389,27 @@ export default function Home() {
             {[
               { 
                 name: "Ron", 
-                image: ronPortrait,
                 role: "Lead Engineer",
                 bio: "Designed Firehawk's autonomous navigation system and flight control algorithms. Passionate about robotics and saving lives through technology."
               },
               { 
                 name: "Anik", 
-                image: anikPortrait,
                 role: "Systems Architect",
                 bio: "Developed the medical payload system and emergency response protocols. Combines healthcare knowledge with engineering excellence."
               },
               { 
                 name: "Trim", 
-                image: trimPortrait,
                 role: "Software Developer",
                 bio: "Built the communication systems and real-time tracking platform. Expert in AI integration and emergency dispatch technology."
               },
             ].map((member, index) => (
-              <Card key={index} className="overflow-hidden hover-elevate" data-testid={`card-team-${member.name.toLowerCase()}`}>
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={member.image} 
-                    alt={`${member.name} - Firehawk team member`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <h3 className="text-2xl font-bold">{member.name}</h3>
+              <Card key={index} className="p-8 hover-elevate" data-testid={`card-team-${member.name.toLowerCase()}`}>
+                <CardContent className="p-0 text-center">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl font-bold text-primary">{member.name[0]}</span>
+                  </div>
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
                     <span className="text-sm text-muted-foreground">13 years old</span>
                   </div>
                   <p className="text-primary font-medium mb-3">{member.role}</p>
