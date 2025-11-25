@@ -35,8 +35,9 @@ export default function AdminDashboard() {
     }
   }, [setLocation]);
 
-  const { data: messages, isLoading } = useQuery<ContactMessage[]>({
+  const { data: messages, isLoading, refetch } = useQuery<ContactMessage[]>({
     queryKey: ["/api/contact"],
+    refetchInterval: 3000,
   });
 
   const replyMutation = useMutation({
@@ -90,10 +91,20 @@ export default function AdminDashboard() {
                 <p className="text-sm text-muted-foreground">Message Management</p>
               </div>
             </div>
-            <Button variant="outline" onClick={handleLogout} data-testid="button-logout">
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => refetch()}
+                data-testid="button-refresh"
+              >
+                Refresh
+              </Button>
+              <Button variant="outline" onClick={handleLogout} data-testid="button-logout">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
       </div>
